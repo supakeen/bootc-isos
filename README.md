@@ -15,3 +15,10 @@ Then:
 just iso bazzite
 just iso kinoite
 ```
+
+## Status:
+- builds
+- boots
+- flatpak embedding seems to work
+- cannot install yet
+- an unknown number of bugs exists

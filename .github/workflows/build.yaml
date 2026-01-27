@@ -20,10 +20,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Install just
+        uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3
+
       - name: Build ${{ matrix.container }} container
-        run: |
-          podman build \
-            --cap-add sys_admin \
-            --security-opt label=disable \
-            -t iso-hackathon-${{ matrix.container }}:latest \
-            ./${{ matrix.container }}
+        run: just container ${{ matrix.container }}

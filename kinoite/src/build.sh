@@ -33,7 +33,7 @@ cp -av /usr/lib/efi/*/*/EFI /boot/efi/
 cp /boot/efi/EFI/fedora/grubx64.efi /boot/efi/EFI/fedora/gcdx64.efi
 
 # needed for image-builder's buildroot
-dnf install -y xorriso isomd5sum
+dnf install -y xorriso isomd5sum squashfs-tools
 
 # Clean up dnf cache to save space
 dnf clean all

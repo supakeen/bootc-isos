@@ -24,3 +24,11 @@ build-image-builder:
     # GOPROXY=direct so we always fetch the latest bootc-generic-iso-dev branch
     GOPROXY=direct go mod tidy
     podman build -t {{image-builder-dev}} .
+
+iso-in-container target:
+    mkdir -p output
+    podman run --rm --privileged \
+        -v /var/lib/containers/storage:/var/lib/containers/storage \
+        -v ./output:/output:Z \
+        {{image-builder-dev}} \
+        build --bootc-ref localhost/{{target}}-installer --bootc-default-fs ext4 bootc-generic-iso

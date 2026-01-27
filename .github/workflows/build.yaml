@@ -28,3 +28,6 @@ jobs:
 
       - name: Build ${{ matrix.container }} container
         run: just container ${{ matrix.container }}
+
+      - name: Build ${{ matrix.container }} ISO
+        run: sudo just iso-in-container ${{ matrix.container }}

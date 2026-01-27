@@ -31,4 +31,4 @@ iso-in-container target:
         -v /var/lib/containers/storage:/var/lib/containers/storage \
         -v ./output:/output:Z \
         {{image-builder-dev}} \
-        build --bootc-ref localhost/{{target}}-installer --bootc-default-fs ext4 bootc-generic-iso
+        build --output-dir /output --bootc-ref localhost/{{target}}-installer --bootc-default-fs ext4 bootc-generic-iso

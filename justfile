@@ -3,7 +3,7 @@ image-builder-dev := "image-builder-dev"
 
 # Helper: returns "--bootc-installer-payload-ref <ref>" or "" if no payload_ref file
 _payload_ref_flag target:
-    @echo '{{ if path_exists(target / "payload_ref") == "true" { "--bootc-installer-payload-ref " + trim(read(target / "payload_ref")) } else { "" } }}'
+    @if [ -f "{{target}}/payload_ref" ]; then echo "--bootc-installer-payload-ref $(cat '{{target}}/payload_ref' | tr -d '[:space:]')"; fi
 
 container target:
     podman build --cap-add sys_admin --security-opt label=disable -t {{target}}-installer ./{{target}}
